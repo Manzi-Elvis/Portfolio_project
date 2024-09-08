@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Digital Portfolio Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>{{ user.username }}'s Dashboard</h1>
+    </header>
+
+    <section class="portfolio">
+        <h2>Your Portfolio</h2>
+        <!-- Display user's portfolio content here -->
+        <!-- You may use Jinja templating to dynamically populate this section -->
+    </section>
+
+    <section class="add-link-form">
+        <h2>Add a New Link</h2>
+        <form action="{{ url_for('add_link') }}" method="post">
+            {{ form.csrf_token }}
+            <div class="input-group">
+                <label for="link">Link URL</label>
+                {{ form.link(class="form-control", id="link") }}
+            </div>
+
+            <div class="input-group">
+                <label for="description">Link Description</label>
+                {{ form.description(class="form-control", id="description") }}
+            </div>
+
+            <button type="submit">Add Link</button>
+        </form>
+    </section>
+</body>
+</html>
